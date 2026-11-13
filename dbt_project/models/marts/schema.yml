@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: daily_revenue
+    description: "Daily revenue metrics with running totals and day-over-day comparisons"
+    columns:
+      - name: order_date
+        description: "The date of the orders"
+        tests:
+          - unique
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null
+      - name: revenue
+        tests:
+          - not_null
+
+  - name: top_items
+    description: "Item popularity rankings with revenue contribution"
+    columns:
+      - name: item_name
+        tests:
+          - unique
+          - not_null
+      - name: total_quantity
+        tests:
+          - not_null
+
+  - name: customer_segments
+    description: "Customer segmentation based on ordering frequency and spend"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_segment
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["VIP", "Loyal", "Regular", "New / Low Activity"]
+
+  - name: delivery_performance
+    description: "Delivery time analysis per restaurant and city"
+    columns:
+      - name: restaurant_name
+        tests:
+          - not_null
+      - name: avg_delivery_min
+        tests:
+          - not_null

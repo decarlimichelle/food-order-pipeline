@@ -1,0 +1,12 @@
+food_orders:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      port: 5432
+      user: pipeline
+      password: pipeline123
+      dbname: food_orders
+      schema: public
+      threads: 2

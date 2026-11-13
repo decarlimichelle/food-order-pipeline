@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned and enriched orders with customer, item, and restaurant details"
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: total_price
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["pending", "preparing", "out_for_delivery", "delivered", "cancelled"]
+      - name: quantity
+        tests:
+          - not_null

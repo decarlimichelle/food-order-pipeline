@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    database: food_orders
+    schema: public
+    tables:
+      - name: fact_orders
+        description: "Raw fact table populated by the Kafka consumer"
+      - name: dim_customers
+        description: "Customer dimension table"
+      - name: dim_items
+        description: "Menu item dimension table"
+      - name: dim_restaurants
+        description: "Restaurant dimension table"
+      - name: raw_orders
+        description: "Raw JSON payloads from Kafka"
